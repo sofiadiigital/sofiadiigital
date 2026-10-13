@@ -1,0 +1,473 @@
+/* =========================================================
+   Sofia Diigital · Portfolio 2026
+   Colores y tipografías tomados del PDF original (Canva)
+   ========================================================= */
+
+:root {
+  --bg: #f8f6f0;          /* fondo crema */
+  --vino: #8b1e3f;        /* bordó de títulos y logo */
+  --salmon: #f69278;      /* salmón de títulos en cursiva */
+  --seg-dark: #830532;    /* línea de tiempo: tramo oscuro */
+  --seg-light: #b3325b;   /* línea de tiempo: tramo claro */
+  --dot: #e95eaf;         /* viñetas rosas */
+  --text: #4a4646;
+  --line: rgba(139, 30, 63, 0.14);
+
+  --sans: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --serif: "Times New Roman", "Tinos", Times, serif;
+
+  --pad-x: clamp(16px, 5vw, 72px);
+  --pad-y: clamp(56px, 7vw, 104px);
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+figure { margin: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+
+/* ---------- Portada ---------- */
+.cover {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto 1fr auto;
+  padding: clamp(20px, 4vw, 56px) var(--pad-x) 24px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.cover-logo {
+  grid-row: 1; grid-column: 1;
+  width: clamp(120px, 17vw, 300px);
+  margin-top: clamp(24px, 4vw, 48px);
+  margin-left: clamp(0px, 2vw, 40px);
+}
+.cover-handle {
+  grid-row: 1; grid-column: 2;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(1rem, 1.8vw, 1.6rem);
+  letter-spacing: 0.12em;
+  color: var(--vino);
+  text-decoration: none;
+  align-self: start;
+}
+.cover-handle:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+.cover-center {
+  grid-row: 2; grid-column: 1 / -1;
+  align-self: center;
+  text-align: center;
+  padding-bottom: clamp(0px, 6vh, 80px);
+}
+.cover-year {
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 700;
+  color: var(--salmon);
+  font-size: clamp(2rem, 4.6vw, 4.2rem);
+  letter-spacing: 0.35em;
+  margin-right: -0.35em;
+  line-height: 1.1;
+}
+.cover-title {
+  margin: 0.05em 0 0.1em;
+  font-family: var(--sans);
+  font-weight: 700;
+  color: var(--vino);
+  font-size: clamp(2.3rem, 10.5vw, 7.4rem);
+  letter-spacing: 0.13em;
+  margin-right: -0.13em;
+  line-height: 1.05;
+}
+.cover-sub {
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 700;
+  color: var(--salmon);
+  font-size: clamp(1.25rem, 3.2vw, 2.7rem);
+  line-height: 1.2;
+}
+.scroll-hint {
+  grid-row: 3; grid-column: 1 / -1;
+  justify-self: center;
+  color: var(--vino);
+  opacity: 0.55;
+  padding: 8px;
+  animation: bob 2.2s ease-in-out infinite;
+}
+.scroll-hint:hover { opacity: 1; }
+@keyframes bob { 50% { transform: translateY(6px); } }
+
+/* ---------- Estructura de cada “diapositiva” ---------- */
+.slide {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: var(--pad-y) var(--pad-x);
+  border-top: 1px solid var(--line);
+}
+.slide-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+}
+.mini-logo {
+  width: clamp(96px, 10vw, 140px);
+  flex: none;
+}
+.badge {
+  display: inline-block;
+  margin: 0;
+  background: var(--vino);
+  color: var(--salmon);
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(1.45rem, 3.2vw, 2.55rem);
+  line-height: 1.2;
+  padding: 0.14em 0.42em 0.18em;
+}
+/* Título de dos renglones con el fondo bordó “cortado” como en el PDF */
+.badge--wrap {
+  display: inline;
+  line-height: 1.55;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.slide-title {
+  margin: 0.05em 0 0;
+  font-weight: 700;
+  color: var(--vino);
+  font-size: clamp(1.8rem, 3.6vw, 2.9rem);
+  line-height: 1.2;
+}
+.handle {
+  margin: 0.35em 0 0;
+  color: var(--vino);
+  font-size: clamp(1.05rem, 2.1vw, 1.75rem);
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 0.55em;
+  line-height: 1.35;
+}
+.handle a { text-decoration: none; overflow-wrap: anywhere; }
+.handle a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+/* ---------- Línea de tiempo ---------- */
+.timeline {
+  list-style: none;
+  margin: clamp(40px, 6vw, 80px) 0 0;
+  padding: 0;
+}
+.tl-year {
+  display: inline-block;
+  color: #f6f4ee;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  font-size: clamp(1.05rem, 1.7vw, 1.6rem);
+  background: var(--seg-dark);
+  border-radius: 999px;
+  padding: 0.3em 1.2em;
+}
+.tl:nth-child(even) .tl-year { background: var(--seg-light); }
+.tl-notes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: clamp(0.95rem, 1.15vw, 1.08rem);
+  letter-spacing: 0.01em;
+}
+.tl-notes li {
+  position: relative;
+  padding-left: 1.3em;
+  margin: 0.2em 0;
+}
+.tl-notes li::before {
+  content: "";
+  position: absolute;
+  left: 0.15em;
+  top: 0.62em;
+  width: 0.45em;
+  height: 0.45em;
+  border-radius: 50%;
+  background: var(--dot);
+}
+.tl-notes strong { color: var(--vino); font-weight: 600; }
+
+/* Celular / tablet: línea de tiempo vertical */
+@media (max-width: 979px) {
+  .tl { position: relative; padding-left: 0; padding-bottom: 28px; }
+  .tl:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 26px; top: 2.2em; bottom: 0;
+    width: 2px;
+    background: var(--line);
+  }
+  .tl-notes { margin: 12px 0 0 26px; padding-left: 22px; }
+}
+
+/* Escritorio: barra horizontal con los textos arriba y abajo, como en el PDF */
+@media (min-width: 980px) {
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: auto auto auto;
+    column-gap: 0;
+  }
+  .tl { display: contents; }
+  .tl-year {
+    grid-row: 2;
+    grid-column: var(--i);
+    position: relative;
+    z-index: var(--i);
+    display: block;
+    text-align: center;
+    padding: 0.42em 0;
+  }
+  .tl:not(:first-child) .tl-year {
+    margin-left: -40px;
+    padding-left: 40px;
+  }
+  .tl-notes {
+    grid-column: var(--i) / span 2;
+    position: relative;
+    padding-right: 16px;
+  }
+  .tl:last-child .tl-notes { grid-column: 6; padding-right: 0; }
+  /* años impares arriba, pares abajo */
+  .tl:nth-child(odd) .tl-notes { grid-row: 1; align-self: end; padding-bottom: 64px; }
+  .tl:nth-child(even) .tl-notes { grid-row: 3; align-self: start; padding-top: 64px; }
+  .tl-notes::after {
+    content: "";
+    position: absolute;
+    left: calc(25% - 1px);
+    width: 2px;
+    height: 46px;
+    background: #8f7d82;
+  }
+  .tl:last-child .tl-notes::after { left: calc(50% - 1px); }
+  .tl:nth-child(odd) .tl-notes::after { bottom: 0; }
+  .tl:nth-child(even) .tl-notes::after { top: 0; }
+}
+
+/* ---------- Antes / Después ---------- */
+.compare {
+  --gap-g: clamp(32px, 7vw, 120px);
+  --gap-p: clamp(8px, 1.1vw, 16px);
+  --avail: calc(min(100vw, 1440px) - 2 * var(--pad-x) - 20px);
+  /* todos los teléfonos del caso con el mismo ancho */
+  --pw: min(240px, calc((var(--avail) - var(--gap-g) - (var(--total) - 2) * var(--gap-p)) / var(--total)));
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--gap-g);
+  margin-top: clamp(36px, 5vw, 64px);
+}
+.group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: none;
+  min-width: 0;
+}
+.phones {
+  display: flex;
+  justify-content: center;
+  gap: var(--gap-p);
+  width: 100%;
+}
+.phone {
+  flex: 0 0 var(--pw);
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+  border-radius: 14%/7%;
+  transition: transform 0.25s ease;
+}
+.phone img { width: 100%; }
+.phone:hover { transform: translateY(-4px); }
+.phone:focus-visible { outline: 3px solid var(--salmon); outline-offset: 4px; }
+.group-label {
+  margin-top: 0.6em;
+  font-weight: 700;
+  color: var(--vino);
+  font-size: clamp(1.35rem, 2.6vw, 2.3rem);
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  text-align: center;
+}
+.group-label--sm { font-size: clamp(1.15rem, 2.1vw, 1.9rem); }
+
+@media (max-width: 699px) {
+  .compare { flex-direction: column; align-items: stretch; gap: 44px; }
+  .group { width: 100%; }
+  .group .group-label { order: -1; margin: 0 0 14px; }
+  .phones { flex-wrap: wrap; gap: 14px 12px; }
+  .phone { flex: 0 0 calc(50% - 6px); }
+  .phone:only-child { flex-basis: 62%; }
+}
+
+/* ---------- BOAZ ---------- */
+.boaz {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  align-items: center;
+  gap: clamp(32px, 5vw, 80px);
+  margin-top: clamp(28px, 4vw, 56px);
+}
+.phone--free {
+  justify-self: center;
+  width: 100%;
+  max-width: 440px;
+  border-radius: 0;
+}
+.boaz-logo {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 3vw, 48px);
+}
+.boaz-logo img { width: min(100%, 540px); flex: 1 1 auto; min-width: 0; }
+.boaz-logo .group-label { margin: 0; }
+
+@media (max-width: 699px) {
+  .boaz { grid-template-columns: 1fr; }
+  .phone--free { max-width: 340px; }
+  .boaz-logo { flex-direction: column; }
+  .boaz-logo img { width: 88%; }
+}
+
+/* ---------- Identidad de marca ---------- */
+.logos {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-top: clamp(40px, 7vw, 110px);
+  margin-bottom: clamp(0px, 4vw, 60px);
+}
+.logos img:nth-child(1) { width: clamp(220px, 29%, 420px); }
+.logos img:nth-child(2) { width: clamp(120px, 15%, 200px); }
+.logos img:nth-child(3) { width: clamp(220px, 31%, 440px); }
+
+.calumi {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: clamp(40px, 10vw, 160px);
+  margin-top: clamp(40px, 7vw, 110px);
+  margin-bottom: clamp(0px, 4vw, 60px);
+}
+.calumi figure { display: flex; flex-direction: column; align-items: center; }
+.calumi figure:first-child img { width: clamp(200px, 26vw, 340px); }
+.calumi figure:last-child img { width: clamp(240px, 36vw, 450px); }
+.calumi .group-label { margin-top: 1em; }
+
+@media (max-width: 699px) {
+  .logos { flex-direction: column; gap: 48px; }
+  .logos img:nth-child(1) { width: 78%; }
+  .logos img:nth-child(2) { width: 40%; }
+  .logos img:nth-child(3) { width: 80%; }
+}
+
+/* ---------- Contacto ---------- */
+.contact {
+  min-height: 90vh;
+  min-height: 90svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--pad-y) var(--pad-x);
+  border-top: 1px solid var(--line);
+}
+.contact-logo { width: clamp(220px, 30vw, 420px); margin-bottom: clamp(32px, 5vw, 64px); }
+.contact-text,
+.contact-links {
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  color: #111;
+  font-size: clamp(1.4rem, 3.4vw, 2.75rem);
+  line-height: 1.45;
+}
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 0.6em;
+}
+.contact-links a { text-decoration: none; white-space: nowrap; }
+.contact-links a:hover { color: var(--vino); text-decoration: underline; text-underline-offset: 5px; }
+
+@media (max-width: 639px) {
+  .mini-logo { display: none; }
+  .contact-links span { display: none; }
+  .contact-links { flex-direction: column; }
+}
+
+/* ---------- Visor de imágenes ---------- */
+.lightbox {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  max-width: 96vw;
+  max-height: 96vh;
+  overflow: visible;
+}
+.lightbox::backdrop { background: rgba(28, 6, 14, 0.86); }
+.lightbox img {
+  max-width: 92vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  border-radius: 12px;
+}
+.lightbox-close {
+  position: fixed;
+  top: 12px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+}
+.lightbox-close:hover { background: rgba(255, 255, 255, 0.28); }
+
+/* Salto de línea del título de BOAZ solo en pantallas grandes (igual que el PDF) */
+.br-desk { display: none; }
+@media (min-width: 1100px) { .br-desk { display: inline; } }
